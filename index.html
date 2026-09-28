@@ -570,27 +570,48 @@ function contactOk(prefix){
   return ok;
 }
 
+// Optional but recommended: paste a free Web3Forms access key here (web3forms.com → enter the
+// email address → key is emailed). When set, it is used instead of FormSubmit and needs no activation step.
+const WEB3FORMS_KEY = '53687a46-c3a4-46d3-be09-70e41bc9f995';
+
 async function sendRequest(subject, fields, btn, msgEl){
   const label = btn.textContent;
   btn.disabled = true; btn.textContent = 'Sending…';
   msgEl.className = 'msg';
-  const payload = Object.assign({ _subject: subject, _template: 'table', _captcha: 'false' }, fields);
   try{
-    const r = await fetch('https://formsubmit.co/ajax/' + TO, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const j = await r.json();
-    if(!r.ok || j.success === false || j.success === 'false') throw new Error(j.message || 'Send failed');
+    let r;
+    if(WEB3FORMS_KEY){
+      r = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.assign({ access_key: WEB3FORMS_KEY, subject: subject, from_name: 'AusNet IT website' }, fields))
+      });
+    } else {
+      r = await fetch('https://formsubmit.co/ajax/' + TO, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.assign({ _subject: subject, _template: 'table', _captcha: 'false' }, fields))
+      });
+    }
+    const j = await r.json().catch(() => ({}));
+    if(!r.ok || j.success === false || j.success === 'false'){
+      const e = new Error(j.message || ('HTTP ' + r.status)); e.server = true; throw e;
+    }
     msgEl.className = 'msg ok';
     msgEl.textContent = '✓ Request sent. We\'ll reply to ' + fields.email + ' within one business day.';
   }catch(err){
-    // Fallback: open the visitor's email app with everything pre-filled
-    const body = Object.entries(fields).map(([k,v]) => k + ': ' + v).join('\n');
-    msgEl.className = 'msg warn';
-    msgEl.textContent = 'We couldn\'t send that directly, so your email app is opening with the request pre-filled — just press Send.';
-    window.location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    console.error('Send failed:', err);
+    const reason = (err && err.message) ? err.message : 'network error';
+    if(/activat/i.test(reason)){
+      // FormSubmit first-use activation — tell the site owner instead of opening an email app
+      msgEl.className = 'msg warn';
+      msgEl.textContent = 'Form not yet activated: ' + reason;
+    }else{
+      const body = Object.entries(fields).map(([k,v]) => k + ': ' + v).join('\n');
+      msgEl.className = 'msg warn';
+      msgEl.textContent = 'We couldn\'t send that directly (' + reason + '), so your email app is opening with the request pre-filled — just press Send.';
+      window.location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
   }finally{
     btn.disabled = false; btn.textContent = label;
   }
