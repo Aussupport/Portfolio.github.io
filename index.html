@@ -1,480 +1,655 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AusNetIT Solutions | Global IT Project Delivery</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0f172a',
-                        accent: '#06b6d4',
-                        secondary: '#3b82f6',
-                        dark: '#020617',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .mesh-bg {
-            background-color: #0f172a;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
-        }
-        .service-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -15px rgba(6, 182, 212, 0.3);
-        }
-        .grid-overlay {
-            background-size: 50px 50px;
-            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-    </style>
-<base target="_blank">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AusnetIT Solutions — Scope a Project or Request Talent</title>
+<meta name="description" content="AusnetIT Solutions — turn complex technology needs into a clear plan. Scope a project or request engineering talent. AU/NZ delivery · Global engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0d1a1e">
+<style>
+  :root{
+    --bg:#0d1a1e;          /* page */
+    --bg-hero:#112027;     /* hero / lifted */
+    --bg-deep:#071417;     /* deepest sections */
+    --card:#0f1b1f;        /* panels & tickets */
+    --card-2:#16262b;      /* inner cards */
+    --card-sel:#24373a;    /* selected card */
+    --border:#2c3f42;
+    --border-hi:#3b5553;
+    --mint:#a6ead0;        /* primary accent */
+    --mint-2:#c4f5e2;      /* lighter accent */
+    --mint-dim:rgba(166,234,208,.12);
+    --white:#ffffff;
+    --text:#f4fbfa;        /* bright body text */
+    --text-soft:#d3e0e2;   /* bright secondary text */
+    --text-mute:#9db3b6;   /* labels / placeholders */
+    --on-mint:#062024;
+    --amber:#ffd98a;
+    --radius:20px;
+    --sans:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+    --display:'Space Grotesk','DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;color-scheme:dark}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:60;background:rgba(13,26,30,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:1.08rem;letter-spacing:-.02em;color:#fff}
+  .logo-mark{width:34px;height:34px;border-radius:10px;background:var(--mint);color:var(--on-mint);display:grid;place-items:center;font-weight:800;box-shadow:0 0 18px rgba(166,234,208,.35)}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{color:var(--text-soft);text-decoration:none;font-size:.92rem;font-weight:500}
+  .nav-links a:hover{color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:var(--on-mint);border:none;cursor:pointer;
+    padding:13px 24px;border-radius:999px;font-family:var(--sans);font-size:.92rem;font-weight:700;text-decoration:none;transition:all .18s ease;
+    box-shadow:0 0 22px rgba(166,234,208,.28)}
+  .btn:hover{background:var(--mint-2);transform:translateY(-1px);box-shadow:0 0 30px rgba(166,234,208,.45)}
+  .btn:disabled{opacity:.6;cursor:wait;transform:none}
+  .nav-links .btn{color:var(--on-mint)}
+  .btn.green{background:var(--mint)}
+  .btn.amber{background:#fff;color:#0d1a1e;box-shadow:0 0 22px rgba(255,255,255,.18)}
+  .btn.amber:hover{background:#eafaf4}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:80px 0 40px;text-align:center;background:radial-gradient(60% 70% at 50% 0%,rgba(166,234,208,.10),transparent 70%),linear-gradient(var(--bg-hero),var(--bg))}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--mint);margin-bottom:22px}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint)}
+  h1{font-family:var(--display);font-size:clamp(2.5rem,5.6vw,4.4rem);line-height:1.06;letter-spacing:-.035em;font-weight:700;color:#fff}
+  h1 .g{color:var(--mint);text-shadow:0 0 36px rgba(166,234,208,.35)}
+  h1 .b{color:var(--mint-2);text-shadow:0 0 36px rgba(166,234,208,.25)}
+  .hero .sub{max-width:620px;margin:22px auto 0;color:var(--text-soft);font-size:1.1rem}
+
+  /* ---------- Mode switch ---------- */
+  .mode-zone{margin-top:38px}
+  .mode-switch{display:inline-flex;background:var(--card);border:1px solid var(--border-hi);border-radius:999px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .mode-btn{border:none;background:transparent;color:var(--text-soft);padding:13px 30px;border-radius:999px;cursor:pointer;
+    font-family:var(--sans);font-size:.95rem;font-weight:700;letter-spacing:.02em;transition:all .18s ease}
+  .mode-btn:hover{color:#fff}
+  .mode-btn.active{background:var(--mint);color:var(--on-mint);box-shadow:0 0 20px rgba(166,234,208,.3)}
+  .mode-note{margin-top:14px;font-size:.92rem;color:var(--text-soft)}
+  @media(max-width:560px){.mode-btn{padding:12px 18px;font-size:.85rem}}
+
+  /* ---------- Panels ---------- */
+  .panel{display:none;padding:56px 0}
+  .panel.show{display:block;animation:fadeUp .35s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .sec-label{font-size:.78rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:8px;color:var(--mint)}
+  .sec-title{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;letter-spacing:-.02em;margin-bottom:6px;color:#fff}
+  .sec-sub{color:var(--text-soft);max-width:60ch;margin-bottom:34px}
+
+  /* ---------- Service cards ---------- */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:1000px){.grid4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.grid4{grid-template-columns:1fr}}
+  .svc{background:var(--card-2);border-radius:var(--radius);padding:26px 24px;cursor:pointer;border:1px solid var(--border);transition:all .18s ease;position:relative;display:flex;flex-direction:column;gap:10px}
+  .svc:hover{transform:translateY(-4px);border-color:var(--border-hi);box-shadow:0 16px 36px rgba(0,0,0,.4)}
+  .svc.on{background:var(--card-sel);border-color:var(--mint);box-shadow:0 0 0 1px var(--mint),0 0 26px rgba(166,234,208,.15)}
+  .svc .num{font-size:.8rem;font-weight:700;color:var(--mint);opacity:.8}
+  .svc .icon{width:52px;height:52px;border-radius:14px;background:var(--mint-dim);display:grid;place-items:center;margin:4px 0}
+  .svc .icon svg{width:30px;height:30px;stroke:var(--mint)}
+  .svc h3{font-family:var(--display);font-size:1.25rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;color:#fff}
+  .svc p{font-size:.92rem;color:var(--text-soft)}
+  .svc .cta{margin-top:auto;align-self:flex-start;background:rgba(255,255,255,.08);border:1px solid var(--border-hi);border-radius:999px;
+    padding:9px 18px;font-family:var(--sans);font-size:.85rem;font-weight:700;cursor:pointer;color:#fff;display:inline-flex;gap:6px;align-items:center;transition:gap .15s ease,background .15s ease}
+  .svc .cta:hover{gap:10px;background:rgba(166,234,208,.18)}
+  .svc .tick{position:absolute;top:18px;right:18px;width:24px;height:24px;border-radius:50%;background:var(--mint);color:var(--on-mint);
+    display:none;place-items:center;font-size:.8rem;font-weight:800}
+  .svc.on .tick{display:grid}
+
+  /* ---------- Examples + brief box ---------- */
+  .ex-scroll{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:14px}
+  .ex-chip{flex:0 0 auto;font-size:.8rem;border:1px solid var(--border);background:var(--card-2);color:var(--text-soft);
+    padding:8px 15px;border-radius:999px;cursor:pointer;white-space:nowrap;font-weight:600}
+  .ex-chip:hover{border-color:var(--mint);color:#fff}
+  .ex-chip.vague{border-style:dashed}
+  textarea{width:100%;font-family:var(--sans);font-size:.98rem;color:#fff;background:var(--card);
+    border:1px solid var(--border-hi);border-radius:16px;padding:16px;resize:vertical;min-height:110px}
+  textarea::placeholder{color:var(--text-mute)}
+  textarea:focus{outline:none;border-color:var(--mint);box-shadow:0 0 0 3px rgba(166,234,208,.12)}
+  .clarify{margin-top:16px;padding:16px 18px;border:1px dashed var(--amber);border-radius:16px;background:rgba(255,217,138,.07);
+    font-size:.92rem;color:var(--text);display:none}
+  .clarify.show{display:block}
+  .clarify .ct{font-size:.75rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+
+  /* ---------- PM toggle ---------- */
+  .pm-toggle{margin-top:26px;border:1px dashed var(--border-hi);border-radius:16px;padding:18px 20px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;background:rgba(255,255,255,.03)}
+  .pm-toggle b{display:block;font-size:1rem;color:#fff}
+  .pm-toggle span{font-size:.88rem;color:var(--text-soft)}
+  .switch{width:46px;height:26px;background:#46565a;border-radius:13px;position:relative;cursor:pointer;flex-shrink:0;transition:background .15s}
+  .switch.on{background:var(--mint)}
+  .switch .knob{position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:left .15s}
+  .switch.on .knob{left:23px}
+
+  /* ---------- Ticket ---------- */
+  .ticket-wrap{margin-top:44px}
+  .ticket{background:var(--card);color:var(--text);border:1px solid var(--border-hi);border-radius:22px;padding:28px;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  .ticket::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--mint),transparent)}
+  .ticket-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:.78rem;
+    letter-spacing:.1em;color:var(--text-mute);text-transform:uppercase;font-weight:700}
+  .ticket-head .tid{color:var(--mint)}
+  .ticket-empty{color:var(--text-mute);font-size:.95rem;padding:8px 0}
+  .trow{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.93rem;color:#fff}
+  .trow:last-of-type{border-bottom:none}
+  .trow .l{color:var(--text-soft)}
+  .branch{margin-top:16px;padding-top:16px;border-top:1px dashed var(--border-hi)}
+  .branch-title{font-size:.75rem;color:var(--mint);text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-bottom:14px}
+  .qrow{margin-bottom:14px}
+  .qrow label{display:block;font-size:.85rem;color:var(--text-soft);margin-bottom:8px}
+  .options{display:flex;gap:8px;flex-wrap:wrap}
+  .opt{background:var(--card-2);border:1px solid var(--border-hi);color:var(--text);
+    padding:7px 14px;border-radius:999px;font-size:.82rem;cursor:pointer;transition:all .12s ease}
+  .opt:hover{border-color:var(--mint)}
+  .opt.sel{background:var(--mint);border-color:var(--mint);color:var(--on-mint);font-weight:700}
+  .ticket-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:18px;border-top:1px solid var(--border);flex-wrap:wrap;gap:14px}
+  .status{font-size:.8rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+  .status.ok{color:var(--mint)}
+
+  /* ---------- Talent mode ---------- */
+  .talent-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  @media(max-width:900px){.talent-cols{grid-template-columns:1fr}}
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+  .chip{border:1px solid var(--border-hi);background:var(--card-2);padding:10px 18px;border-radius:999px;cursor:pointer;
+    font-size:.9rem;font-weight:600;color:var(--text);transition:all .15s ease}
+  .chip:hover{border-color:var(--mint)}
+  .chip.sel{background:var(--mint);border-color:var(--mint);color:var(--on-mint);font-weight:700}
+  .eng-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px}
+  @media(max-width:640px){.eng-row{grid-template-columns:1fr}}
+  .eng-card{background:var(--card-2);border:1px solid var(--border);border-radius:16px;padding:18px;cursor:pointer;transition:all .15s ease}
+  .eng-card:hover{border-color:var(--border-hi)}
+  .eng-card.active{background:var(--card-sel);border-color:var(--mint);box-shadow:0 0 0 1px var(--mint),0 0 22px rgba(166,234,208,.12)}
+  .eng-card b{display:block;font-size:.98rem;margin-bottom:4px;color:#fff}
+  .eng-card span{font-size:.83rem;color:var(--text-soft)}
+  .role{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--card-2);border:1px solid var(--border);
+    border-radius:16px;padding:16px 18px;margin-bottom:10px;transition:all .15s ease;cursor:pointer}
+  .role:hover{border-color:var(--border-hi)}
+  .role.sel{background:var(--card-sel);border-color:var(--mint);box-shadow:0 0 0 1px var(--mint)}
+  .role b{display:block;font-size:.98rem;color:#fff}
+  .role .meta{font-size:.78rem;color:var(--text-soft)}
+  .badge{font-size:.72rem;font-weight:800;background:var(--mint-dim);color:var(--mint);padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .outsource-note{font-size:.92rem;color:var(--text-soft);background:var(--mint-dim);border:1px solid rgba(166,234,208,.22);border-radius:16px;padding:16px 18px;margin-bottom:22px}
+  .outsource-note strong{color:#fff}
+  .checkline{display:flex;align-items:flex-start;gap:10px;font-size:.92rem;margin:4px 0 20px;cursor:pointer;line-height:1.5;color:var(--text)}
+  .checkline input{width:18px;height:18px;accent-color:var(--mint);margin-top:2px;flex-shrink:0}
+
+  /* ---------- Contact fields + messages ---------- */
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:560px){.fgrid{grid-template-columns:1fr}}
+  .fld{width:100%;font-family:var(--sans);font-size:.92rem;color:#fff;background:var(--bg-deep);border:1px solid var(--border-hi);border-radius:12px;padding:12px 14px;min-height:0}
+  .fld::placeholder{color:var(--text-mute)}
+  .fld:focus{outline:none;border-color:var(--mint);box-shadow:0 0 0 3px rgba(166,234,208,.12)}
+  .fld.err{border-color:#ff8a96}
+  textarea.fld{min-height:74px;resize:vertical;margin-top:10px;padding:12px 14px;border-radius:12px;font-size:.92rem}
+  .msg{display:none;margin-top:16px;padding:12px 16px;border-radius:12px;font-size:.88rem;line-height:1.5}
+  .msg.ok{display:block;background:rgba(166,234,208,.14);color:var(--mint-2)}
+  .msg.warn{display:block;background:rgba(255,217,138,.13);color:var(--amber)}
+  .msg.err{display:block;background:rgba(255,138,150,.13);color:#ffb3bb}
+
+  /* ---------- CTA band ---------- */
+  .band{background:radial-gradient(60% 100% at 50% 0%,rgba(166,234,208,.12),transparent 70%),var(--bg-deep);border:1px solid var(--border);color:#fff;border-radius:26px;padding:56px 32px;text-align:center;margin:70px 0}
+  .band h2{font-family:var(--display);font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.02em;color:#fff}
+  .band h2 .g{color:var(--mint);text-shadow:0 0 30px rgba(166,234,208,.35)}
+  .band h2 .a{color:var(--mint-2)}
+  .band p{color:var(--text-soft);margin:16px auto 30px;max-width:52ch}
+
+  .foot-links{margin-top:6px}
+  .foot-links a{color:var(--text-soft);text-decoration:none}
+  .foot-links a:hover{color:var(--mint);text-decoration:underline}
+  footer{padding:40px 0 56px;text-align:center;color:var(--text-mute);font-size:.85rem;border-top:1px solid var(--border);background:var(--bg-deep)}
+</style>
 </head>
-<body class="bg-dark text-slate-300 overflow-x-hidden">
+<body>
 
-    <!-- Navigation - Enlarged Logo -->
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
-                <div class="flex-shrink-0 flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-accent to-secondary rounded-lg flex items-center justify-center shadow-lg shadow-accent/20">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <span class="font-display font-bold text-3xl text-white tracking-tight">AusNetIT<span class="text-accent"> Solutions</span></span>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="text-base font-medium text-slate-300 hover:text-accent transition-colors">Services</a>
-                    <a href="#contact" class="px-6 py-2.5 bg-accent/10 border border-accent/50 text-accent rounded-full text-base font-semibold hover:bg-accent/20 transition-all duration-300 hover:scale-105">
-                        Contact Us
-                    </a>
-                </div>
-
-                <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white p-2">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-slate-800">
-            <div class="px-4 pt-2 pb-6 space-y-1">
-                <a href="#services" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-lg">Services</a>
-                <a href="#contact" class="block px-3 py-3 text-base font-medium text-accent hover:bg-slate-800/50 rounded-lg">Contact Us</a>
-            </div>
-        </div>
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark">A</span> AusnetIT Solutions</div>
+    <nav class="nav-links">
+      <a href="#flow" onclick="setMode('project')">Scope a project</a>
+      <a href="#flow" onclick="setMode('talent')">Request talent</a>
+      <a class="btn" href="#flow" onclick="setMode('project')">Start a brief →</a>
     </nav>
+  </div>
+</header>
 
-    <!-- Hero Section - Updated with CTA Line -->
-    <section class="relative py-24 flex items-center justify-center mesh-bg overflow-hidden">
-        <div class="absolute inset-0 grid-overlay opacity-30"></div>
-        
-        <!-- Animated Background Elements -->
-        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> AU / NZ delivery · Global engineering</div>
+    <h1>Technology that moves<br><span class="g">your business</span> <span class="b">forward.</span></h1>
+    <p class="sub">Bring us the problem — not a perfectly written specification. We turn a rough idea into a structured brief and connect you with the right engineer, BA, or PM.</p>
 
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 pt-16">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 mb-8 backdrop-blur-sm">
-                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                <span class="text-sm font-medium text-slate-300">Global Operations - Melbourne & Colombo</span>
-            </div>
-            
-            <h1 class="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-tight max-w-5xl mx-auto">
-                IT Solutions and <br>
-                <span class="gradient-text">Project Management</span><br>
-                for your business
-            </h1>
-            
-            <p class="mt-6 text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                Delivering secure, scalable cloud solutions backed by 30+ years of enterprise experience across Australia and New Zealand.
-            </p>
-            
-            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#contact" class="group px-8 py-4 bg-gradient-to-r from-accent to-secondary text-white rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 hover:-translate-y-1 flex items-center gap-2">
-                    Start Your Project
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                </a>
-                <a href="#services" class="px-8 py-4 border border-slate-600 text-white rounded-full font-semibold text-lg hover:bg-slate-800 transition-all duration-300 hover:border-slate-500">
-                    Our Services
-                </a>
-            </div>
-        </div>
-    </section>
+    <div class="mode-zone" id="flow">
+      <div class="mode-switch">
+        <button class="mode-btn active" data-mode="project" onclick="setMode('project')">📐 Scope a Project</button>
+        <button class="mode-btn" data-mode="talent" onclick="setMode('talent')">👥 Request Talent</button>
+      </div>
+      <div class="mode-note" id="modeNote">Have a piece of work? Pick your service areas and we'll scope it — live.</div>
+    </div>
+  </div>
+</section>
 
-    <!-- Services Section - Updated Our Expertise -->
-    <section id="services" class="py-24 bg-slate-900/50 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-4">Our Expertise</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Comprehensive IT solutions designed to scale with your business needs</p>
-            </div>
+<!-- ============ PROJECT MODE ============ -->
+<section class="panel show" id="panel-project">
+  <div class="wrap">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Application Modernisation & Digital Delivery -->
-                <div class="service-card glass-panel p-8 rounded-2xl group cursor-pointer border border-transparent hover:border-accent/30">
-                    <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-all duration-300 group-hover:scale-110">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Application Modernisation & Digital Delivery</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Modernising legacy applications into cloud-native, secure, and scalable solutions with ongoing delivery and support.</p>
-                    <ul class="space-y-2 text-xs text-slate-500">
-                        <li class="flex items-start gap-2">
-                            <span class="text-accent mt-0.5">›</span>
-                            <span>Mobile-friendly web applications (responsive, PWA-ready)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-accent mt-0.5">›</span>
-                            <span>Mobile app delivery (iOS / Android / cross-platform)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-accent mt-0.5">›</span>
-                            <span>Application modernisation and re-architecture</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-accent mt-0.5">›</span>
-                            <span>Containerised app delivery using Docker & Kubernetes</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-accent mt-0.5">›</span>
-                            <span>CI/CD pipelines for application release and support</span>
-                        </li>
-                    </ul>
-                </div>
+    <div class="sec-label blue">01 — What do you need help with?</div>
+    <div class="sec-title">Select your service areas</div>
+    <p class="sec-sub">Tap one or more cards. Your requirement ticket builds itself as you go.</p>
 
-                <!-- Azure / M365 & Hybrid Cloud Solutions -->
-                <div class="service-card glass-panel p-8 rounded-2xl group cursor-pointer border border-transparent hover:border-secondary/30">
-                    <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300 group-hover:scale-110">
-                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Azure / M365 & Hybrid Cloud Solutions</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Designing and delivering secure hybrid environments that seamlessly integrate on-premises systems with Azure and Microsoft 365.</p>
-                    <ul class="space-y-2 text-xs text-slate-500">
-                        <li class="flex items-start gap-2">
-                            <span class="text-secondary mt-0.5">›</span>
-                            <span>Hybrid identity with Entra ID & Conditional Access</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-secondary mt-0.5">›</span>
-                            <span>Azure Virtual Desktop for secure remote work</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-secondary mt-0.5">›</span>
-                            <span>Hybrid DR using Azure Site Recovery</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Enterprise Migrations -->
-                <div class="service-card glass-panel p-8 rounded-2xl group cursor-pointer border border-transparent hover:border-purple-500/30">
-                    <div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-all duration-300 group-hover:scale-110">
-                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Enterprise Migrations</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">End-to-end migration leadership ensuring minimal downtime, data integrity, and business continuity at enterprise scale.</p>
-                    <ul class="space-y-2 text-xs text-slate-500">
-                        <li class="flex items-start gap-2">
-                            <span class="text-purple-400 mt-0.5">›</span>
-                            <span>VMware & legacy infrastructure to Azure</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-purple-400 mt-0.5">›</span>
-                            <span>Microsoft 365 tenant-to-tenant migrations</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-purple-400 mt-0.5">›</span>
-                            <span>Data centre exit and platform modernisation</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Infrastructure Automation (IaC & DevOps) -->
-                <div class="service-card glass-panel p-8 rounded-2xl group cursor-pointer border border-transparent hover:border-orange-500/30">
-                    <div class="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-all duration-300 group-hover:scale-110">
-                        <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Infrastructure Automation (IaC & DevOps)</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Accelerating delivery and reducing risk through repeatable, automated infrastructure and modern DevOps practices.</p>
-                    <ul class="space-y-2 text-xs text-slate-500">
-                        <li class="flex items-start gap-2">
-                            <span class="text-orange-400 mt-0.5">›</span>
-                            <span>Terraform & Bicep for Azure provisioning</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-orange-400 mt-0.5">›</span>
-                            <span>Azure DevOps CI/CD pipelines</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-orange-400 mt-0.5">›</span>
-                            <span>PowerShell automation for operations and compliance</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Security, Governance & Compliance -->
-                <div class="service-card glass-panel p-8 rounded-2xl group cursor-pointer border border-transparent hover:border-pink-500/30">
-                    <div class="w-16 h-16 bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-pink-500/20 transition-all duration-300 group-hover:scale-110">
-                        <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Security, Governance & Compliance</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Embedding security and compliance by design, supporting enterprise and government-aligned frameworks.</p>
-                    <ul class="space-y-2 text-xs text-slate-500">
-                        <li class="flex items-start gap-2">
-                            <span class="text-pink-400 mt-0.5">›</span>
-                            <span>Essential Eight maturity uplift</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-pink-400 mt-0.5">›</span>
-                            <span>ISO 27001 alignment and audit support</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-pink-400 mt-0.5">›</span>
-                            <span>RFFR compliance and security controls implementation</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-pink-400 mt-0.5">›</span>
-                            <span>Zero Trust, DLP, and data governance using Microsoft Purview</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Project & Technical Delivery Leadership -->
-                <div class="service-card glass-panel p-8 rounded-2xl group cursor-pointer border border-transparent hover:border-green-500/30">
-                    <div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-all duration-300 group-hover:scale-110">
-                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Project & Technical Delivery Leadership</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Driving complex cloud and infrastructure initiatives with clear ownership, accountability, and stakeholder alignment.</p>
-                    <ul class="space-y-2 text-xs text-slate-500">
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-400 mt-0.5">›</span>
-                            <span>Large-scale cloud migration programs</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-400 mt-0.5">›</span>
-                            <span>Cross-functional coordination with security and business teams</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-green-400 mt-0.5">›</span>
-                            <span>Risk, vendor, and delivery governance</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 relative mesh-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Global Inquiries Welcome</h2>
-                <p class="text-slate-400 text-lg">Send us your project requirements.</p>
-            </div>
-
-            <div class="max-w-2xl mx-auto">
-                <div class="glass-panel p-8 rounded-2xl border border-slate-700/50">
-                    <form id="projectForm" class="space-y-6" action="https://formspree.io/f/xykjkozj" method="POST">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-400 mb-2">Name</label>
-                                <input type="text" name="name" id="name" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="Your name" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-400 mb-2">Company</label>
-                                <input type="text" name="company" id="company" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="Company name">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-400 mb-2">Email</label>
-                            <input type="email" name="email" id="email" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="your@email.com" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-400 mb-2">Project Location</label>
-                            <select name="region" id="region" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
-                                <option value="">Select region...</option>
-                                <option value="australia">Australia / APAC</option>
-                                <option value="asia">Asia (India, Singapore, etc.)</option>
-                                <option value="europe">Europe</option>
-                                <option value="americas">North/South America</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-400 mb-2">Project Requirements</label>
-                            <textarea name="message" id="message" rows="4" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="Tell us about your IT project, timeline, and delivery requirements..." required></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-accent to-secondary text-white font-semibold py-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-accent/25 flex items-center justify-center gap-2" id="submitBtn">
-                            Send Project Inquiry
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black/50 border-t border-slate-800 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col items-center gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-accent to-secondary rounded-lg flex items-center justify-center shadow-lg shadow-accent/10">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <span class="font-display font-bold text-3xl text-white">AusNetIT Solutions</span>
-                </div>
-                
-                <div class="text-slate-500 text-sm text-center max-w-2xl">
-                    <p>&copy; 2003 AusNet IT Solutions. All rights reserved. | ABN: 67 830 987 096</p>
-                    <p class="mt-2">
-                        <a href="#" class="hover:text-accent transition-colors mx-2">Privacy Policy</a> | 
-                        <a href="#" class="hover:text-accent transition-colors mx-2">Terms of Service</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Success Notification -->
-    <div id="notification" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-2xl transform translate-y-24 transition-transform duration-300 z-50 flex items-center gap-3 border border-green-400/20">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-        </svg>
-        <div>
-            <div class="font-semibold text-base">Thank You!</div>
-            <div class="text-sm opacity-90">We have received your inquiry. We'll get back to your request soon.</div>
-        </div>
+    <div class="grid4" id="svcGrid">
+      <div class="svc mint" data-id="azure" data-name="Azure / DevOps / Architecture">
+        <span class="tick">✓</span><div class="num">01</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.8"><path d="M6.5 18a4 4 0 0 1 .5-7.97A5.5 5.5 0 0 1 16.7 8.6 4.5 4.5 0 0 1 18 18H6.5z"/><path d="M12 11.5v6M9.6 14.6L12 12.2l2.4 2.4"/></svg></div>
+        <h3>Azure &amp; M365</h3>
+        <p>Cloud, identity, migration, modern workplace and Copilot.</p>
+        <button class="cta">Build a brief →</button>
+      </div>
+      <div class="svc lav" data-id="dev" data-name="Web, AI & Mobile Development">
+        <span class="tick">✓</span><div class="num">02</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7.5 9.5l2 2-2 2M11.5 14h4"/></svg></div>
+        <h3>Web / AI / Mobile</h3>
+        <p>Digital products, AI workflows, portals and applications.</p>
+        <button class="cta">Build a brief →</button>
+      </div>
+      <div class="svc sky" data-id="sec" data-name="Security & Compliance Audit">
+        <span class="tick">✓</span><div class="num">03</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></div>
+        <h3>Security &amp; Compliance</h3>
+        <p>Essential Eight, ISO 27001, risk, audit and resilience.</p>
+        <button class="cta">Build a brief →</button>
+      </div>
+      <div class="svc cream" data-id="m365" data-name="M365 / Intune / Autopilot / AD / Zero Trust / Copilot">
+        <span class="tick">✓</span><div class="num">04</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M4 20c0-3 2.2-5 5-5s5 2 5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 20c.3-2.4 2-3.8 4-3.8"/></svg></div>
+        <h3>Modern Workplace</h3>
+        <p>Intune, Autopilot, AD health, Zero Trust and Copilot rollout.</p>
+        <button class="cta">Build a brief →</button>
+      </div>
     </div>
 
-    <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
+    <div class="sec-label blue" style="margin-top:44px">02 — Or start from a real example</div>
+    <div class="sec-title" style="font-size:1.3rem">See how a brief becomes a ticket</div>
+    <div class="ex-scroll" id="exScroll"></div>
+    <textarea id="briefBox" placeholder="Paste or type your requirement here — as rough as you like."></textarea>
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('glass-panel', 'shadow-lg');
-            } else {
-                navbar.classList.remove('glass-panel', 'shadow-lg');
-            }
-        });
+    <div class="clarify" id="clarifyBox">
+      <div class="ct">⚠ Flagged as underspecified — a sharper question for you</div>
+      <div id="clarifyText"></div>
+    </div>
 
-        // Form handling with Formspree
-        const form = document.getElementById('projectForm');
-        const notification = document.getElementById('notification');
-        const submitBtn = document.getElementById('submitBtn');
-        
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...';
-            submitBtn.disabled = true;
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    notification.classList.remove('translate-y-24');
-                    form.reset();
-                    
-                    setTimeout(() => {
-                        notification.classList.add('translate-y-24');
-                    }, 5000);
-                } else {
-                    alert('Oops! There was a problem submitting your form. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Oops! There was a problem submitting your form. Please check your internet connection.');
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
-        });
+    <div class="pm-toggle">
+      <div><b>Add project management</b><span>Route this to a PM/BA-led team, not just an engineer — for short or long-term delivery.</span></div>
+      <div class="switch" id="pmSwitch"><div class="knob"></div></div>
+    </div>
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    document.getElementById('mobileMenu').classList.add('hidden');
-                }
-            });
-        });
-    </script>
+    <div class="ticket-wrap">
+      <div class="sec-label blue">03 — Live requirement ticket</div>
+      <div class="sec-title" style="font-size:1.3rem;margin-bottom:18px">Builds itself as you select</div>
+      <div class="ticket">
+        <div class="ticket-head"><span>Ticket <span class="tid" id="tId">TCK-4021</span></span><span id="tCount">0 areas selected</span></div>
+        <div id="tBody"><div class="ticket-empty">Select one or more areas above to start building your request.</div></div>
+
+        <div class="branch" id="branchM365" style="display:none">
+          <div class="branch-title">A few quick questions — Modern Workplace / M365</div>
+          <div class="qrow"><label>Roughly how many devices?</label>
+            <div class="options" data-q="devices"><span class="opt">&lt; 50</span><span class="opt">50–250</span><span class="opt">250–1000</span><span class="opt">1000+</span></div></div>
+          <div class="qrow"><label>Current state?</label>
+            <div class="options" data-q="state"><span class="opt">On-prem AD only</span><span class="opt">Hybrid AD + Entra</span><span class="opt">Already Entra-joined</span></div></div>
+          <div class="qrow"><label>Primary goal right now?</label>
+            <div class="options" data-q="goal"><span class="opt">New Autopilot/Kiosk build</span><span class="opt">AD → M365 migration</span><span class="opt">Zero Trust review</span><span class="opt">Copilot rollout</span><span class="opt">Fix existing issues</span></div></div>
+        </div>
+
+        <div class="branch">
+          <div class="branch-title">Your details</div>
+          <div class="fgrid">
+            <input class="fld" id="pName" placeholder="Your name *" autocomplete="name">
+            <input class="fld" id="pEmail" type="email" placeholder="Email *" autocomplete="email">
+            <input class="fld" id="pCompany" placeholder="Company" autocomplete="organization">
+            <input class="fld" id="pPhone" placeholder="Phone (optional)" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="ticket-foot">
+          <span class="status" id="tStatus">● Awaiting selection</span>
+          <button class="btn green" id="pBtn" onclick="submitProject()">Get scoped proposal →</button>
+        </div>
+        <div class="msg" id="pMsg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TALENT MODE ============ -->
+<section class="panel" id="panel-talent">
+  <div class="wrap">
+
+    <div class="sec-label green">01 — Where and how</div>
+    <div class="sec-title">Post a role, not a job ad</div>
+    <p class="sec-sub">Request individual engineers or a complete delivery team. Tell us the region, the engagement type, and the expertise — we'll handle sourcing and vetting.</p>
+
+    <div class="talent-cols">
+      <div>
+        <div class="outsource-note"><strong>Talent is delivered in Australia &amp; New Zealand by default.</strong> Tick below if you're open to lower-cost delivery from our wider team — every outsourced engagement still runs under an AU/NZ-based Project Manager.</div>
+
+        <div class="chip-row" id="regionRow">
+          <div class="chip sel" data-region="🇦🇺 Australia">🇦🇺 Australia</div>
+          <div class="chip" data-region="🇳🇿 New Zealand">🇳🇿 New Zealand</div>
+        </div>
+
+        <label class="checkline">
+          <input type="checkbox" id="outsourceToggle">
+          <span>Also consider outsourced delivery — <b>Sri Lanka · India · Pakistan</b>, with AU/NZ PM oversight included</span>
+        </label>
+
+        <div class="chip-row" id="outsourceRow" style="display:none">
+          <div class="chip" data-region="🇱🇰 Sri Lanka">🇱🇰 Sri Lanka</div>
+          <div class="chip" data-region="🇮🇳 India">🇮🇳 India</div>
+          <div class="chip" data-region="🇵🇰 Pakistan">🇵🇰 Pakistan</div>
+        </div>
+
+        <div class="sec-label green" style="margin-top:10px">02 — Engagement type</div>
+        <div class="eng-row" id="engRow">
+          <div class="eng-card active" data-eng="Full-time engineer"><b>Full-time engineer</b><span>Direct, ongoing placement into your team — we source, vet, and hand over.</span></div>
+          <div class="eng-card" data-eng="Short-term assignment"><b>Short-term assignment</b><span>Fixed-duration engagement for a defined piece of work.</span></div>
+          <div class="eng-card" data-eng="Full delivery team"><b>Full delivery team</b><span>Engineer(s) + BA + PM allocated together, run as a managed engagement.</span></div>
+        </div>
+
+        <div class="sec-label green" style="margin-top:6px">03 — Which expertise</div>
+        <div id="roleList">
+          <div class="role sel" data-role="Azure / DevOps Engineer"><div><b>Azure / DevOps Engineer</b><div class="meta">SVC-01 · Architecture, FinOps, pipelines</div></div><span class="badge">3 available</span></div>
+          <div class="role" data-role="M365 / Intune / AD Engineer"><div><b>M365 / Intune / AD Engineer</b><div class="meta">SVC-02 · Autopilot, Zero Trust, Copilot</div></div><span class="badge">2 available</span></div>
+          <div class="role" data-role="Web / AI / Mobile Developer"><div><b>Web / AI / Mobile Developer</b><div class="meta">SVC-03 · Full-stack, AI features, cross-platform</div></div><span class="badge">4 available</span></div>
+          <div class="role" data-role="Security & Compliance Auditor"><div><b>Security &amp; Compliance Auditor</b><div class="meta">SVC-04 · Essential 8, ISO 27001, RFFR</div></div><span class="badge">2 available</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-label green">Live talent ticket</div>
+        <div class="sec-title" style="font-size:1.3rem;margin-bottom:18px">Your request, structured</div>
+        <div class="ticket">
+          <div class="ticket-head"><span>Ticket <span class="tid">TLT-1042</span></span><span id="tlCount">1 role selected</span></div>
+          <div id="tlBody"></div>
+          <div class="branch">
+            <div class="branch-title">Your details</div>
+            <div class="fgrid">
+              <input class="fld" id="tName" placeholder="Your name *" autocomplete="name">
+              <input class="fld" id="tEmail" type="email" placeholder="Email *" autocomplete="email">
+              <input class="fld" id="tCompany" placeholder="Company" autocomplete="organization">
+              <input class="fld" id="tPhone" placeholder="Phone (optional)" autocomplete="tel">
+            </div>
+            <textarea class="fld" id="tNotes" placeholder="Anything else? Start date, duration, key skills… (optional)"></textarea>
+          </div>
+          <div class="ticket-foot">
+            <span class="status ok" id="tlStatus">● Ready to route</span>
+            <button class="btn amber" id="tBtn" onclick="submitTalent()">Submit talent request →</button>
+          </div>
+          <div class="msg" id="tMsg"></div>
+        </div>
+        <p style="margin-top:18px;font-size:.9rem;color:var(--text-soft)">Every placement is vetted for AU/NZ delivery standards, security clearance, and a track record of shipped work. You interview only shortlisted candidates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<div class="wrap">
+  <div class="band">
+    <h2>Ready when you are — <span class="g">scope it</span> or <span class="a">staff it.</span></h2>
+    <p>Start with a rough brief or a rough role description. We'll turn either one into a useful next step within one business day.</p>
+    <button class="btn green" onclick="setMode('project')">Scope a project →</button>
+    &nbsp;
+    <button class="btn amber" onclick="setMode('talent')">Request talent →</button>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>© 2003 AusNet IT Solutions. All rights reserved. &nbsp;|&nbsp; ABN: 67 830 987 096</div>
+    <div class="foot-links"><a href="https://ausnetit.com.au/#" target="_blank" rel="noopener">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://ausnetit.com.au/#" target="_blank" rel="noopener">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>
+/* ================= MODE SWITCH ================= */
+const notes = {
+  project: "Have a piece of work? Pick your service areas and we'll scope it — live.",
+  talent: "Need people, not just a scoped project? Tell us the role, region, and engagement type."
+};
+function setMode(mode){
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  document.getElementById('modeNote').textContent = notes[mode];
+  document.getElementById('panel-project').classList.toggle('show', mode === 'project');
+  document.getElementById('panel-talent').classList.toggle('show', mode === 'talent');
+}
+
+/* ================= PROJECT MODE ================= */
+const svcs = document.querySelectorAll('#svcGrid .svc');
+const tBody = document.getElementById('tBody');
+const tCount = document.getElementById('tCount');
+const tStatus = document.getElementById('tStatus');
+const branchM365 = document.getElementById('branchM365');
+const briefBox = document.getElementById('briefBox');
+const clarifyBox = document.getElementById('clarifyBox');
+const clarifyText = document.getElementById('clarifyText');
+const pmSwitch = document.getElementById('pmSwitch');
+let selected = new Set(), pmOn = false;
+
+function renderTicket(){
+  const n = selected.size;
+  tCount.textContent = n + (n === 1 ? ' area selected' : ' areas selected');
+  if(n === 0){
+    tBody.innerHTML = '<div class="ticket-empty">Select one or more areas above to start building your request.</div>';
+    tStatus.textContent = '● Awaiting selection'; tStatus.classList.remove('ok');
+    branchM365.style.display = 'none';
+    return;
+  }
+  let rows = '';
+  svcs.forEach(c => { if(selected.has(c.dataset.id))
+    rows += '<div class="trow"><span class="l">' + c.dataset.name + '</span><span>added ✓</span></div>'; });
+  const brief = briefBox.value.trim();
+  if(brief) rows += '<div class="trow"><span class="l">Brief</span><span style="max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + brief.slice(0,60) + (brief.length>60?'…':'') + '</span></div>';
+  if(pmOn) rows += '<div class="trow"><span class="l">Delivery</span><span>PM + BA led</span></div>';
+  tBody.innerHTML = rows;
+  tStatus.textContent = '● Ready to route'; tStatus.classList.add('ok');
+  branchM365.style.display = selected.has('m365') ? 'block' : 'none';
+}
+
+svcs.forEach(c => c.addEventListener('click', () => {
+  const id = c.dataset.id;
+  selected.has(id) ? (selected.delete(id), c.classList.remove('on')) : (selected.add(id), c.classList.add('on'));
+  renderTicket();
+}));
+
+pmSwitch.addEventListener('click', () => { pmOn = !pmOn; pmSwitch.classList.toggle('on', pmOn); renderTicket(); });
+briefBox.addEventListener('input', renderTicket);
+
+document.querySelectorAll('#branchM365 .options').forEach(g =>
+  g.addEventListener('click', e => {
+    if(!e.target.classList.contains('opt')) return;
+    g.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+    e.target.classList.add('sel');
+  }));
+
+/* Examples with AI-style clarification flags */
+const examples = [
+  {svc:'azure', vague:false, text:"We upgraded our app's front-end framework and the Azure deployment is now failing — need the pipeline diagnosed and fixed."},
+  {svc:'azure', vague:true, text:"Can someone review our Azure setup and help bring the monthly cloud bill down?",
+   clarify:"Which subscriptions are in scope? Any specific services driving cost (VMs, storage, egress)? One-off review or ongoing FinOps monitoring?"},
+  {svc:'m365', vague:false, text:"Need Intune and Autopilot set up from scratch for our new Windows device fleet, including packaging our line-of-business apps."},
+  {svc:'m365', vague:true, text:"Our kiosk devices aren't locking down properly after Autopilot enrolment — something's wrong with the profile.",
+   clarify:"How many devices affected? Entra-joined or hybrid? Single-app or multi-app kiosk mode? Any recent Windows update before it broke?"},
+  {svc:'dev', vague:false, text:"We have Figma designs ready and need our WordPress site rebuilt to match, fully mobile-responsive."},
+  {svc:'dev', vague:true, text:"We want to add an AI chat assistant to our website but we're not sure what's realistic.",
+   clarify:"Should it answer from your product docs only, or also take actions (bookings, orders)? How much source content exists? Any response-time or budget expectations?"},
+  {svc:'sec', vague:false, text:"We're preparing for ISO 27001 certification and need a gap analysis plus policy documentation."},
+  {svc:'sec', vague:true, text:"We want our overall security posture reviewed — not tied to a specific framework yet.",
+   clarify:"Which systems are in scope? A compliance driver (client, tender, insurance)? Is Essential 8, ISO 27001 or RFFR most relevant to your sector?"}
+];
+const svcLabel = {azure:'Azure & M365', m365:'Modern Workplace', dev:'Web / AI / Mobile', sec:'Security & Compliance'};
+const exScroll = document.getElementById('exScroll');
+examples.forEach(ex => {
+  const chip = document.createElement('div');
+  chip.className = 'ex-chip' + (ex.vague ? ' vague' : '');
+  chip.textContent = (ex.vague ? '~ ' : '') + svcLabel[ex.svc] + (ex.vague ? ' (vague)' : ' (scoped)');
+  chip.addEventListener('click', () => {
+    briefBox.value = ex.text;
+    svcs.forEach(c => { c.classList.remove('on'); selected.delete(c.dataset.id); });
+    const match = document.querySelector('.svc[data-id="' + ex.svc + '"]');
+    if(match){ match.classList.add('on'); selected.add(ex.svc); }
+    if(ex.vague){ clarifyText.textContent = ex.clarify; clarifyBox.classList.add('show'); }
+    else clarifyBox.classList.remove('show');
+    renderTicket();
+  });
+  exScroll.appendChild(chip);
+});
+
+/* ================= TALENT MODE ================= */
+const regions = [];
+document.querySelectorAll('#regionRow .chip, #outsourceRow .chip').forEach(ch =>
+  ch.addEventListener('click', () => { ch.classList.toggle('sel'); renderTalent(); }));
+
+document.getElementById('outsourceToggle').addEventListener('change', function(){
+  document.getElementById('outsourceRow').style.display = this.checked ? 'flex' : 'none';
+  if(!this.checked) document.querySelectorAll('#outsourceRow .chip').forEach(c => c.classList.remove('sel'));
+  renderTalent();
+});
+
+let engagement = 'Full-time engineer';
+document.querySelectorAll('#engRow .eng-card').forEach(card =>
+  card.addEventListener('click', () => {
+    document.querySelectorAll('#engRow .eng-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    engagement = card.dataset.eng;
+    renderTalent();
+  }));
+
+let roles = new Set(['Azure / DevOps Engineer']);
+document.querySelectorAll('#roleList .role').forEach(r =>
+  r.addEventListener('click', () => {
+    const id = r.dataset.role;
+    roles.has(id) ? (roles.delete(id), r.classList.remove('sel')) : (roles.add(id), r.classList.add('sel'));
+    renderTalent();
+  }));
+
+function renderTalent(){
+  const regs = [...document.querySelectorAll('#regionRow .chip.sel, #outsourceRow .chip.sel')].map(c => c.dataset.region);
+  const tlBody = document.getElementById('tlBody');
+  const tlCount = document.getElementById('tlCount');
+  const tlStatus = document.getElementById('tlStatus');
+  const n = roles.size;
+  tlCount.textContent = n + (n === 1 ? ' role selected' : ' roles selected');
+  if(n === 0){
+    tlBody.innerHTML = '<div class="ticket-empty">Select at least one role to build your talent request.</div>';
+    tlStatus.textContent = '● Awaiting selection'; tlStatus.classList.remove('ok');
+    return;
+  }
+  let rows = '<div class="trow"><span class="l">Region</span><span>' + (regs.length ? regs.join(' · ') : '— pick a region —') + '</span></div>';
+  rows += '<div class="trow"><span class="l">Engagement</span><span>' + engagement + '</span></div>';
+  roles.forEach(r => rows += '<div class="trow"><span class="l">' + r + '</span><span>requested ✓</span></div>');
+  tlBody.innerHTML = rows;
+  tlStatus.textContent = '● Ready to route'; tlStatus.classList.add('ok');
+}
+renderTalent();
+
+/* ================= SUBMIT → aseladecosta@gmail.com ================= */
+const TO = 'aseladecosta@gmail.com';
+const $ = id => document.getElementById(id);
+
+function contactOk(prefix){
+  const n = $(prefix+'Name'), e = $(prefix+'Email');
+  [n,e].forEach(x => x.classList.remove('err'));
+  let ok = true;
+  if(!n.value.trim()){ n.classList.add('err'); ok = false; }
+  if(!/^\S+@\S+\.\S+$/.test(e.value.trim())){ e.classList.add('err'); ok = false; }
+  return ok;
+}
+
+async function sendRequest(subject, fields, btn, msgEl){
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  msgEl.className = 'msg';
+  const payload = Object.assign({ _subject: subject, _template: 'table', _captcha: 'false' }, fields);
+  try{
+    const r = await fetch('https://formsubmit.co/ajax/' + TO, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const j = await r.json();
+    if(!r.ok || j.success === false || j.success === 'false') throw new Error(j.message || 'Send failed');
+    msgEl.className = 'msg ok';
+    msgEl.textContent = '✓ Request sent. We\'ll reply to ' + fields.email + ' within one business day.';
+  }catch(err){
+    // Fallback: open the visitor's email app with everything pre-filled
+    const body = Object.entries(fields).map(([k,v]) => k + ': ' + v).join('\n');
+    msgEl.className = 'msg warn';
+    msgEl.textContent = 'We couldn\'t send that directly, so your email app is opening with the request pre-filled — just press Send.';
+    window.location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }finally{
+    btn.disabled = false; btn.textContent = label;
+  }
+}
+
+function submitProject(){
+  const msg = $('pMsg');
+  const brief = briefBox.value.trim();
+  if(selected.size === 0 && !brief){
+    msg.className = 'msg err'; msg.textContent = 'Please select at least one service area or describe your requirement.'; return;
+  }
+  if(!contactOk('p')){
+    msg.className = 'msg err'; msg.textContent = 'Please add your name and a valid email so we can reply.'; return;
+  }
+  const areas = [...svcs].filter(c => selected.has(c.dataset.id)).map(c => c.dataset.name).join(' | ') || '—';
+  const answers = [];
+  document.querySelectorAll('#branchM365 .options').forEach(g => {
+    const sel = g.querySelector('.opt.sel');
+    if(sel) answers.push(g.previousElementSibling.textContent + ' ' + sel.textContent);
+  });
+  const fields = {
+    name: $('pName').value.trim(),
+    email: $('pEmail').value.trim(),
+    company: $('pCompany').value.trim() || '—',
+    phone: $('pPhone').value.trim() || '—',
+    'Request type': 'Scope a project',
+    'Ticket': $('tId').textContent,
+    'Service areas': areas,
+    'Brief': brief || '—',
+    'Project management': pmOn ? 'Yes — PM + BA led' : 'No',
+    'Modern Workplace answers': answers.join(' | ') || '—'
+  };
+  sendRequest('AusnetIT — Project request ' + fields.Ticket + ' from ' + fields.name, fields, $('pBtn'), msg);
+}
+
+function submitTalent(){
+  const msg = $('tMsg');
+  if(roles.size === 0){
+    msg.className = 'msg err'; msg.textContent = 'Please select at least one role.'; return;
+  }
+  if(!contactOk('t')){
+    msg.className = 'msg err'; msg.textContent = 'Please add your name and a valid email so we can reply.'; return;
+  }
+  const regs = [...document.querySelectorAll('#regionRow .chip.sel, #outsourceRow .chip.sel')].map(c => c.dataset.region);
+  const fields = {
+    name: $('tName').value.trim(),
+    email: $('tEmail').value.trim(),
+    company: $('tCompany').value.trim() || '—',
+    phone: $('tPhone').value.trim() || '—',
+    'Request type': 'Request talent',
+    'Ticket': 'TLT-1042',
+    'Regions': regs.join(' · ') || '—',
+    'Outsourced delivery considered': $('outsourceToggle').checked ? 'Yes (AU/NZ PM oversight)' : 'No',
+    'Engagement': engagement,
+    'Roles': [...roles].join(' | '),
+    'Notes': $('tNotes').value.trim() || '—'
+  };
+  sendRequest('AusnetIT — Talent request TLT-1042 from ' + fields.name, fields, $('tBtn'), msg);
+}
+</script>
 </body>
 </html>
