@@ -233,6 +233,38 @@
   .qbox .qrow label{font-size:.95rem;font-weight:700;color:#fff}
   .qbox .hint{font-weight:400;font-size:.78rem;color:var(--text-mute);margin-left:8px}
   .ex-empty{color:var(--text-mute);font-size:.92rem;padding:6px 0}
+  /* ---------- Our work ---------- */
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+  @media(max-width:900px){.work-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.work-grid{grid-template-columns:1fr}}
+  .work-card{background:var(--card-2);border:1px solid var(--border);border-radius:18px;padding:24px;transition:all .18s ease}
+  .work-card:hover{border-color:var(--mint);transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.35)}
+  .wc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .wc-tags span{font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--mint);background:var(--mint-dim);padding:4px 10px;border-radius:999px}
+  .work-card h3{font-family:var(--display);font-size:1.08rem;color:#fff;margin-bottom:8px;line-height:1.3}
+  .work-card p{font-size:.88rem;color:var(--text-soft);line-height:1.6}
+  .wc-link{display:inline-flex;align-items:center;gap:4px;margin-top:14px;font-size:.84rem;font-weight:700;color:var(--mint);text-decoration:none}
+  .wc-link:hover{text-decoration:underline}
+  .wc-note{display:block;margin-top:14px;font-size:.78rem;color:var(--text-mute);font-style:italic}
+  .partner-head{margin-top:0}
+  .cap-brief{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0 22px}
+  @media(max-width:860px){.cap-brief{grid-template-columns:1fr}}
+  .cap-wide{grid-column:1/-1;scroll-margin-top:90px}
+  .tg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:4px 28px}
+  .tg-sep{margin:26px 0 4px;padding-top:20px;border-top:1px solid var(--border);font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mint)}
+  .cap-card{background:var(--card-2);border:1px solid var(--border);border-radius:18px;padding:26px}
+  .cap-card h3{font-family:var(--display);font-size:1.15rem;color:#fff;margin-bottom:10px}
+  .cap-card p{font-size:.93rem;color:var(--text-soft);line-height:1.65}
+  .cap-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .cap-list li{position:relative;padding-left:26px;font-size:.9rem;color:var(--text-soft);line-height:1.5}
+  .cap-list li::before{content:'✓';position:absolute;left:0;top:0;color:var(--mint);font-weight:800}
+  .tg{margin-top:16px}
+  .tg b{display:block;font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-mute);margin-bottom:8px}
+  .tg-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .tg-chips span{font-size:.84rem;font-weight:600;color:#fff;background:var(--mint-dim);border:1px solid rgba(166,234,208,.22);padding:6px 13px;border-radius:999px}
+  a.work-card.wc-ext{text-decoration:none;display:flex;flex-direction:column;cursor:pointer}
+  .wc-ext .wc-link{margin-top:auto;padding-top:14px}
+
   /* ---------- Contact fields + messages ---------- */
   .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   @media(max-width:560px){.fgrid{grid-template-columns:1fr}}
@@ -246,19 +278,7 @@
   .msg.warn{display:block;background:rgba(255,217,138,.13);color:var(--amber)}
   .msg.err{display:block;background:rgba(255,138,150,.13);color:#ffb3bb}
 
-  /* ---------- Technologies (animated) ---------- */
-  .tech{padding:64px 0 6px}
-  .sec-title em{font-style:normal;color:var(--mint);text-shadow:0 0 28px rgba(166,234,208,.35)}
-  .marq{overflow:hidden;margin-top:22px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-  .marq-track{display:flex;gap:12px;width:max-content;animation:marq 40s linear infinite}
-  .marq.rev .marq-track{animation-direction:reverse;animation-duration:50s}
-  .marq:hover .marq-track{animation-play-state:paused}
-  @keyframes marq{to{transform:translateX(-50%)}}
-  .mq{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:8px 20px 8px 9px;border-radius:999px;border:1px solid var(--border-hi);background:var(--card-2);font-weight:700;font-size:.95rem;color:#fff}
-  .mq i{font-style:normal;color:var(--mint);font-size:.8rem}
-  .mi{display:grid;place-items:center;min-width:30px;height:30px;padding:0 6px;border-radius:9px;font-family:var(--display);font-weight:700;font-size:.72rem;color:var(--on-mint);background:linear-gradient(135deg,#d6f9ec,#7fdcbc)}
-  .tech-note{margin-top:26px;font-size:.78rem;color:var(--text-mute)}
-  @media(prefers-reduced-motion:reduce){.marq-track{animation:none}}
+  .tech-note{margin-top:22px;font-size:.78rem;color:var(--text-mute)}
 
   /* ---------- CTA band ---------- */
   .band{background:radial-gradient(60% 100% at 50% 0%,rgba(166,234,208,.12),transparent 70%),var(--bg-deep);border:1px solid var(--border);color:#fff;border-radius:26px;padding:56px 32px;text-align:center;margin:70px 0}
@@ -276,7 +296,7 @@
 </head>
 <body>
 
-<header>
+<header id="top">
   <div class="wrap nav">
     <div class="logo"><svg class="logo-svg" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lgm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c4f5e2"/><stop offset="1" stop-color="#3fbf9e"/></linearGradient></defs><style>.lc{transform-box:fill-box;transform-origin:center}.lfloat{transform-origin:32px 32px;animation:lgFloat 6s ease-in-out infinite}.lhalo{animation:lgBreathe 3s ease-in-out infinite}.lcore{animation:lgBeat 3s ease-in-out infinite}.lflow{stroke-dasharray:7 93;animation:lgFlow 3s linear infinite}.ltw{animation:lgTw 3s ease-in-out infinite}.ld1{animation-delay:-.75s}.ld2{animation-delay:-1.5s}.ld3{animation-delay:-2.25s}@keyframes lgFloat{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}@keyframes lgBreathe{0%,100%{transform:scale(.8);opacity:.08}50%{transform:scale(1.3);opacity:.3}}@keyframes lgBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}@keyframes lgFlow{to{stroke-dashoffset:-100}}@keyframes lgTw{0%,100%{opacity:.15}50%{opacity:.9}}@media(prefers-reduced-motion:reduce){.lfloat,.lhalo,.lcore,.lflow,.ltw{animation:none}.lhalo{opacity:.14}.lflow{display:none}}</style><rect x="0.8" y="0.8" width="62.4" height="62.4" rx="16.5" fill="#0f1b1f" stroke="url(#lgm)" stroke-width="1.6"/><g fill="#a6ead0"><circle class="ltw" cx="51" cy="48" r="1"/><circle class="ltw ld2" cx="17" cy="16" r=".9"/><circle class="ltw ld1" cx="54" cy="13" r=".8"/></g><g class="lfloat"><g stroke="#a6ead0" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M33 15 L29 49 M14 32 L48 27" opacity=".7"/><path d="M40 39 L31.6 29.8" stroke-width="1.6" opacity=".5"/></g><g stroke="#effff8" stroke-width="2.4" stroke-linecap="round" fill="none"><path class="lflow" pathLength="100" d="M33 15 L29 49"/><path class="lflow ld2" pathLength="100" d="M14 32 L48 27"/><path class="lflow ld1" pathLength="100" stroke-width="1.8" d="M31.6 29.8 L40 39"/></g><g fill="#a6ead0"><circle class="lc lhalo" cx="33" cy="15" r="7"/><circle class="lc lhalo ld1" cx="29" cy="49" r="8.6"/><circle class="lc lhalo ld2" cx="14" cy="32" r="7.6"/><circle class="lc lhalo ld3" cx="48" cy="27" r="6.4"/></g><g fill="#c4f5e2"><circle class="lc lcore" cx="33" cy="15" r="3.9"/><circle class="lc lcore ld1" cx="29" cy="49" r="5.1"/><circle class="lc lcore ld2" cx="14" cy="32" r="4.5"/><circle class="lc lcore ld3" cx="48" cy="27" r="3.7"/><circle class="lc lcore ld1" cx="40" cy="39" r="2.4"/></g></g></svg><span class="logo-text"><span class="lg-name">AusNet <span class="lg-it">IT</span></span><small>SOLUTIONS</small></span></div>
     <nav class="nav-links">
@@ -469,19 +489,98 @@
   </div>
 </section>
 
-<!-- TECHNOLOGIES -->
-<section class="tech" id="tech">
-  <div class="wrap">
-    <div class="sec-label">Our tech stack</div>
-    <div class="sec-title">Technologies we're <em>expert</em></div>
-    <p class="sec-sub">Deep, hands-on delivery across the Microsoft cloud and the tools around it — from identity and devices to data, DevOps and AI.</p>
-  </div>
-  <div class="marq" aria-hidden="true"><div class="marq-track" id="mq1"></div></div>
-  <div class="marq rev" aria-hidden="true"><div class="marq-track" id="mq2"></div></div>
-  <div class="wrap">
-    <p class="tech-note">Microsoft, Azure, Microsoft 365, Intune, Defender, Fabric, GitHub, Copilot and other product names are trademarks of their respective owners.</p>
-  </div>
-</section>
+<!-- PARTNER WORK -->
+<section style="padding:70px 0"><div class="wrap">
+    <div class="partner-head">
+      <div class="sec-label">Delivered with our development partner</div>
+      <div class="sec-title" style="font-size:1.5rem">Live platforms we've helped build</div>
+      <p class="sec-sub">Web/AI/Mobile builds are delivered together with our development partner's team — full-stack work across healthcare, legal, travel and fintech, live and in production today.</p>
+    </div>
+
+    <div class="cap-brief">
+      <div class="cap-card">
+        <div class="wc-tags"><span>Web Development</span></div>
+        <h3>What we do</h3>
+        <p>We design and build custom, mobile-friendly websites and web applications — from content-managed sites to fully custom platforms with backend logic, APIs, and database-driven features. Our work spans everything from WordPress-based sites to modern, custom-coded applications built for performance and scale.</p>
+      </div>
+      <div class="cap-card">
+        <h3>Key capabilities</h3>
+        <ul class="cap-list">
+          <li>Custom web application development (frontend + backend)</li>
+          <li>Mobile-responsive, cross-device design</li>
+          <li>CMS-based websites (WordPress) as well as fully custom-coded platforms</li>
+          <li>RESTful API design, development, and third-party integrations</li>
+          <li>Database design and management (MySQL, MongoDB)</li>
+          <li>Cloud hosting, deployment, and infrastructure management (AWS, Coolify)</li>
+        </ul>
+      </div>
+      <div class="cap-card cap-wide" id="tech">
+        <h3>Technology we use</h3>
+        <div class="tg-grid">
+          <div class="tg"><b>Backend / Server-side</b><div class="tg-chips"><span>PHP</span><span>Laravel</span><span>CodeIgniter</span><span>Express (Node.js)</span><span>LoopBack (Node.js)</span></div></div>
+          <div class="tg"><b>Frontend</b><div class="tg-chips"><span>JavaScript</span><span>React.js</span><span>Next.js</span></div></div>
+          <div class="tg"><b>CMS</b><div class="tg-chips"><span>WordPress</span></div></div>
+          <div class="tg"><b>Databases</b><div class="tg-chips"><span>MySQL</span><span>MongoDB</span></div></div>
+          <div class="tg"><b>Infrastructure / DevOps</b><div class="tg-chips"><span>AWS</span><span>Coolify</span></div></div>
+        </div>
+        <div class="tg-sep">Microsoft cloud, security &amp; workplace</div>
+        <div class="tg-grid">
+          <div class="tg"><b>Microsoft 365 &amp; Cloud</b><div class="tg-chips"><span>Microsoft 365</span><span>Azure</span><span>Exchange</span><span>SharePoint</span><span>Teams</span><span>Power Platform</span></div></div>
+          <div class="tg"><b>Identity &amp; Endpoint</b><div class="tg-chips"><span>Microsoft Entra ID</span><span>Active Directory</span><span>Microsoft Intune</span><span>Windows Autopilot</span><span>Entra Connect</span><span>Conditional Access</span></div></div>
+          <div class="tg"><b>Security &amp; Compliance</b><div class="tg-chips"><span>Microsoft Defender</span><span>Microsoft Sentinel</span><span>Microsoft Purview</span><span>Zero Trust</span><span>Essential Eight</span><span>ISO 27001</span></div></div>
+          <div class="tg"><b>Data &amp; Analytics</b><div class="tg-chips"><span>SQL Server</span><span>Azure SQL</span><span>Microsoft Fabric</span><span>Power BI</span></div></div>
+          <div class="tg"><b>DevOps &amp; Development</b><div class="tg-chips"><span>GitHub</span><span>GitHub Actions</span><span>Azure DevOps</span><span>Bicep &amp; Terraform</span><span>PowerShell</span><span>.NET</span></div></div>
+          <div class="tg"><b>AI &amp; Copilot</b><div class="tg-chips"><span>Microsoft Copilot</span><span>GitHub Copilot</span><span>Copilot Studio</span><span>Azure OpenAI</span></div></div>
+        </div>
+        <p class="tech-note">Microsoft, Azure, Microsoft 365, Intune, Defender, Fabric, GitHub, Copilot and other product names are trademarks of their respective owners.</p>
+      </div>
+    </div>
+    <div class="work-grid">
+
+      <a class="work-card wc-ext" href="https://www.thecaremd.com/" target="_blank" rel="noopener">
+        <div class="wc-tags"><span>Healthcare</span><span>Next.js</span></div>
+        <h3>Telehealth consultation platform</h3>
+        <p>A patient-facing telemedicine platform with online consultations, prescription refills and lab test bookings, backed by a companion app on Google Play.</p>
+        <span class="wc-link">View live ↗</span>
+      </a>
+
+      <a class="work-card wc-ext" href="https://www.hd-law.co.uk/" target="_blank" rel="noopener">
+        <div class="wc-tags"><span>Legal</span><span>Next.js</span></div>
+        <h3>SRA-regulated law firm site</h3>
+        <p>A case-tracking and lead-generation site for a UK Supreme Court litigation firm, with claim-checking funnels and press coverage built in.</p>
+        <span class="wc-link">View live ↗</span>
+      </a>
+
+      <a class="work-card wc-ext" href="https://www.jetdelayed.com/" target="_blank" rel="noopener">
+        <div class="wc-tags"><span>Travel</span><span>Claims Platform</span></div>
+        <h3>Flight compensation claims funnel</h3>
+        <p>An end-to-end flight-delay compensation checker and claims portal, from eligibility funnel through to claim status tracking.</p>
+        <span class="wc-link">View live ↗</span>
+      </a>
+
+      <a class="work-card wc-ext" href="https://peakaccountingsolutions.com/" target="_blank" rel="noopener">
+        <div class="wc-tags"><span>Fintech</span><span>Tax</span></div>
+        <h3>Tax rebate claims platform</h3>
+        <p>A guided eligibility quiz and claims funnel for an Irish tax-rebate service, with live chat support and a documented fee model.</p>
+        <span class="wc-link">View live ↗</span>
+      </a>
+
+      <div class="work-card">
+        <div class="wc-tags"><span>Mobile</span><span>App Store / Play</span></div>
+        <h3>Shipped to Google Play &amp; the App Store</h3>
+        <p>Native mobile delivery alongside the web platforms — including the CareMD companion app and an AI chat assistant published on iOS.</p>
+        <span class="wc-note">Search "CareMD" on Google Play, or "Dopi AI" on the App Store.</span>
+      </div>
+
+      <div class="work-card">
+        <div class="wc-tags"><span>+ More</span></div>
+        <h3>Across legal, hospitality &amp; corporate sectors</h3>
+        <p>Further live builds span law firms, accounting services, hospitality and corporate sites across the UK, UAE and Saudi Arabia. Full list on request.</p>
+        <span class="wc-note">Ask us for the complete portfolio.</span>
+      </div>
+
+    </div>
+</div></section>
 
 <!-- CONTACT -->
 <section id="contact" style="padding:70px 0">
@@ -703,23 +802,6 @@ function renderTalent(){
   tlStatus.textContent = '● Ready to route'; tlStatus.classList.add('ok');
 }
 renderTalent();
-
-/* ================= TECHNOLOGIES ================= */
-const TECH = {
- 'Microsoft 365 & Cloud':[['Microsoft 365','M365'],['Azure','Az'],['Exchange','Ex'],['SharePoint','SP'],['Teams','Te'],['Power Platform','PP']],
- 'Identity & Endpoint':[['Microsoft Entra ID','En'],['Active Directory','AD'],['Microsoft Intune','In'],['Windows Autopilot','AP'],['Entra Connect','EC'],['Conditional Access','CA']],
- 'Security & Compliance':[['Microsoft Defender','Df'],['Microsoft Sentinel','Se'],['Microsoft Purview','Pv'],['Zero Trust','ZT'],['Essential Eight','E8'],['ISO 27001','ISO']],
- 'Data & Analytics':[['SQL Server','SQL'],['Azure SQL','aSQL'],['Microsoft Fabric','Fb'],['Power BI','BI']],
- 'DevOps & Development':[['GitHub','GH'],['GitHub Actions','GA'],['Azure DevOps','DO'],['Bicep & Terraform','IaC'],['PowerShell','PS'],['.NET','.N'],['React','Re']],
- 'AI & Copilot':[['Microsoft Copilot','Co'],['GitHub Copilot','GC'],['Copilot Studio','CS'],['Azure OpenAI','AI']]
-};
-const flat = Object.values(TECH).flat();
-function fillMarquee(id, items){
-  const html = items.map(([n, k]) => '<span class="mq"><span class="mi">' + esc(k) + '</span>' + esc(n) + '</span>').join('');
-  document.getElementById(id).innerHTML = html + html;
-}
-fillMarquee('mq1', flat.filter((_, i) => i % 2 === 0));
-fillMarquee('mq2', flat.filter((_, i) => i % 2 === 1));
 
 /* ================= SUBMIT → aseladecosta@gmail.com ================= */
 const TO = 'aseladecosta@gmail.com';
